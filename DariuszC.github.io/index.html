@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<title>Dariusz Chyla - Multi-disciplinary
+Designer/developer</title>
+
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css"/>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	
+
+	<div>
+		<section id="large-header" class="large-header">
+			<div class="left"> 
+			<canvas id="demo-canvas"></canvas>
+			<img src="images/text.png" id="text" class="text">
+			
+			</div>
+			<div class="right"> 
+				<form   id="form">
+					<input name="email" type="email" placeholder="Email"/>
+					<textarea name="message" placeholder="Message"></textarea>
+					<button type="submit" id="submit">Send</button>
+				</form>
+			</div>
+		</section>
+		<section id="work" >
+			<div id="full-slider">
+				<ul>
+					<li class="active"><img src="pic/pastainbox.png"/></li>
+					<li><img src="pic/pastainbox01.png" /></li>
+					<li><img src="pic/pastainbox02.png" /></li>
+				</ul>
+				<button class="prev">
+					<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+						<path d="M1.8 32.2C1.8 49 15.3 62.4 32 62.4S62.2 49 62.2 32.2 48.6 2 32 2 1.8 15.5 1.8 32.2zm2.4 0C4.2 17 16.6 4.4 32 4.4S59.7 17 59.7 32.2 47.3 60 32 60 4.2 47.5 4.2 32.2z"/>
+						<path d="M24 31.7l-1 1L33.6 43l1.7-1.6-9-8.8 9.8-9.6-1.6-1.7L24 31.7z"/>
+					</svg>
+				</button>
+				<button class="next">
+					<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+						<g fill="#010101">
+							<path d="M32 2C15.3 2 1.8 15.5 1.8 32.2S15.3 62.4 32 62.4c16.6 0 30.2-13.5 30.2-30.2S48.6 2 32 2zm0 58C16.6 60 4.2 47.5 4.2 32.2S16.6 4.4 32 4.4 59.7 17 59.7 32.2 47.3 60 32 60z"/>
+							<path d="M40 31.7L29.7 21.3 28 23l9.5 9.6-8.8 8.8 1.7 1.7L41 32.7l-1-1z"/>
+						</g>
+					</svg>
+				</button>
+			</div>	
+		</section>
+
+	</div>
+		
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/TweenLite.min.js"></script>
+		<script src="js/EasePack.min.js"></script>
+
+
+		<script src="js/demo-1.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<script>
+		
+		$(window).scroll(function(e){
+		  var scrolled = $(window).scrollTop();
+		   $('#large-header').css('top','-'+(0+scrolled*1.5)+'vh');
+		});
+
+		///////////////////SLIDER////////////////
+		
+		var slideCount = $('#full-slider ul li').length;
+		var n=-1;
+		function ChengeSlide(){
+			n++;
+			if(n<slideCount&&n>=0){
+				console.log(n);
+				$('#full-slider ul li.active').removeClass('active');
+				$('#full-slider ul li').eq(n).addClass('active');
+			}
+			else{
+				n=0;
+				console.log(n);
+				$('#full-slider ul li.active').removeClass('active');
+				$('#full-slider ul li').eq(n).addClass('active');
+				
+			}
+		}
+		interval = setInterval(function () {
+				ChengeSlide();
+			}, 6120);
+		$('button.prev').click(function () {
+				n=n-2;
+				ChengeSlide();
+			});
+		$('button.next').click(function () {
+				ChengeSlide();
+			});	
+		$('#work button').hover(function(ev){
+			clearInterval(interval);
+		}, function(ev){
+			interval = setInterval(function () {
+				ChengeSlide();
+			}, 6120);
+		});
+		////////////////////////////////////////
+		
+		$('#submit').click(function () {
+				submitForm();
+				$('#submit').addClass('loading');
+					$('#submit').attr('value', '');
+				return false;
+			});
+
+		function submitForm(){
+			// Initiate Variables With Form Content
+			var email = $("#email").val();
+			var message = $("#message").val();
+			$.ajax({
+				type: "POST",
+				url: "form-process.php",
+				data: "email=" + email + "&message=" + message,
+				beforeSend: function() {
+					
+					
+				},
+				success : function(text){
+					if (text='true'){
+						formSuccess();
+					}
+					else{
+						console.log(text);
+					}
+				}
+			});
+		}
+		function formSuccess(){
+			console.log('JESSSST');
+			
+		}
+			  
+			 /*  
+			 $("#gallery li img").each(function(){
+					imgUrl = this.src.replace('thumb/', '');
+					imgSwap.push(imgUrl);
+				});
+				
+				 $( document ).ready(function() {
+					console.log( "document loaded" );
+				});
+			 
+				$( window ).load(function() {
+					console.log( "window loaded" );
+				});*/
+				
+			  functionTwo();	
+			
+			  window.onresize = functionTwo;
+			  
+			  function functionTwo() {
+				  var height = window.innerHeight;
+				  var work = document.getElementById('work');
+				  var text = document.getElementById('text');
+				  var largeHeader = document.getElementById('large-header');
+				  var slider = document.getElementsByClassName("slde");
+				  
+				  work.style.height = height+'px';
+				 
+				  //console.log( work.style.height);
+				  largeHeader.style.height = height+'px';
+				  text.style.height = height/2+'px';
+				 // slider.style.height = height+'px';
+
+			  }
+
+		</script>
+</body>
+</html>
+
