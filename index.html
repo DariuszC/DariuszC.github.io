@@ -2,11 +2,10 @@
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Dariusz Chyla - Multi-disciplinary
-Designer/developer</title>
+<title>Dariusz Chyla - Multi-disciplinary Designer/Developer</title>
 
 
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
@@ -14,16 +13,16 @@ Designer/developer</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	
+
 
 	<div>
 		<section id="large-header" class="large-header">
-			<div class="left"> 
+			<div class="left">
 			<canvas id="demo-canvas"></canvas>
 			<img src="images/text.png" id="text" class="text">
-			
+
 			</div>
-			<div class="right"> 
+			<div class="right">
 				<form   id="form">
 					<input name="email" type="email" placeholder="Email"/>
 					<textarea name="message" placeholder="Message"></textarea>
@@ -52,11 +51,11 @@ Designer/developer</title>
 						</g>
 					</svg>
 				</button>
-			</div>	
+			</div>
 		</section>
 
 	</div>
-		
+
 		<script src="js/modernizr.custom.js"></script>
 		<script src="js/TweenLite.min.js"></script>
 		<script src="js/EasePack.min.js"></script>
@@ -66,14 +65,14 @@ Designer/developer</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 		<script>
-		
+
 		$(window).scroll(function(e){
 		  var scrolled = $(window).scrollTop();
 		   $('#large-header').css('top','-'+(0+scrolled*1.5)+'vh');
 		});
 
 		///////////////////SLIDER////////////////
-		
+
 		var slideCount = $('#full-slider ul li').length;
 		var n=-1;
 		function ChengeSlide(){
@@ -88,7 +87,7 @@ Designer/developer</title>
 				console.log(n);
 				$('#full-slider ul li.active').removeClass('active');
 				$('#full-slider ul li').eq(n).addClass('active');
-				
+
 			}
 		}
 		interval = setInterval(function () {
@@ -100,7 +99,7 @@ Designer/developer</title>
 			});
 		$('button.next').click(function () {
 				ChengeSlide();
-			});	
+			});
 		$('#work button').hover(function(ev){
 			clearInterval(interval);
 		}, function(ev){
@@ -109,7 +108,7 @@ Designer/developer</title>
 			}, 6120);
 		});
 		////////////////////////////////////////
-		
+
 		$('#submit').click(function () {
 				submitForm();
 				$('#submit').addClass('loading');
@@ -126,8 +125,8 @@ Designer/developer</title>
 				url: "form-process.php",
 				data: "email=" + email + "&message=" + message,
 				beforeSend: function() {
-					
-					
+
+
 				},
 				success : function(text){
 					if (text='true'){
@@ -141,36 +140,36 @@ Designer/developer</title>
 		}
 		function formSuccess(){
 			console.log('JESSSST');
-			
+
 		}
-			  
-			 /*  
+
+			 /*
 			 $("#gallery li img").each(function(){
 					imgUrl = this.src.replace('thumb/', '');
 					imgSwap.push(imgUrl);
 				});
-				
+
 				 $( document ).ready(function() {
 					console.log( "document loaded" );
 				});
-			 
+
 				$( window ).load(function() {
 					console.log( "window loaded" );
 				});*/
-				
-			  functionTwo();	
-			
+
+			  functionTwo();
+
 			  window.onresize = functionTwo;
-			  
+
 			  function functionTwo() {
 				  var height = window.innerHeight;
 				  var work = document.getElementById('work');
 				  var text = document.getElementById('text');
 				  var largeHeader = document.getElementById('large-header');
 				  var slider = document.getElementsByClassName("slde");
-				  
+
 				  work.style.height = height+'px';
-				 
+
 				  //console.log( work.style.height);
 				  largeHeader.style.height = height+'px';
 				  text.style.height = height/2+'px';
@@ -181,4 +180,3 @@ Designer/developer</title>
 		</script>
 </body>
 </html>
-
